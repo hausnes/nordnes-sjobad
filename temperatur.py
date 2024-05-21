@@ -2,6 +2,7 @@ from lxml import html
 import requests
 import csv
 from datetime import datetime
+import os
 
 class TemperatureFetcher:
     def __init__(self, url):
@@ -21,7 +22,7 @@ class TemperatureFetcher:
     def save_to_csv(self, temperature):
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         with open('temperatur.csv', 'a', newline='') as file:
-            writer = csv.writer(file)
+            writer = csv.writer(file, lineterminator=os.linesep)
             writer.writerow([timestamp, temperature])
 
 fetcher = TemperatureFetcher('https://nordnessjobad.no/sanntid/')
