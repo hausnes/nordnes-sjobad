@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordnes sjøbad</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        main {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #446688;
+        }
+        a {
+            color: #6699cc;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <h1>Nordnes sjøbad</h1>
+        <p>Siste temperatur: <span id="temp"></span>. Henta klokka <span id="tid"></span></p>
+        
+        <h2>API-endepunkt</h2>
+        <ul>
+            <li><a href="https://nordnes.sneaas.no/latest">https://nordnes.sneaas.no/latest - Siste temperatur</a></li>
+            <li><a href="https://nordnes.sneaas.no/all">https://nordnes.sneaas.no/all - Alle temperaturar</a></li>
+        </ul>
+    </main>
+
+    <script>
+        async function getCurrentTemp() {
+            const response = await fetch("https://nordnes.sneaas.no/latest");
+
+            const data = await response.json();
+
+            console.log(data);
+
+            const temp = document.getElementById("temp");
+            const tid = document.getElementById("tid");
+
+            temp.innerText = data.temperature;
+            tid.innerText = data.time;
+        }
+
+        getCurrentTemp();
+    </script>
+</body>
+</html>
