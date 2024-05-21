@@ -3,8 +3,8 @@ Hentar temperatur frå Nordnes sjøbad si offisielle nettside og lagrar temperat
 
 # Om koden
 - Køyrer på ein Ubuntu-server vha. crontab.
-- Hentar data kvar time, og skriv dette til lokal CSV-fil (https://crontab.guru/#*_*_*_*_*)
-- Overfører oppdatert CSV-fil til Github 1 minutt seinare (https://crontab.guru/#1_*_*_*_*)
+- Hentar data kvar time, og skriv dette til lokal CSV-fil: [crontab.guru](https://crontab.guru/#*_*_*_*_*)
+- Overfører oppdatert CSV-fil til Github 1 minutt seinare: [crontab.guru](https://crontab.guru/#1_*_*_*_*)
 
 # Tips til seinare
 - Setje opp SSH for autentisering: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
