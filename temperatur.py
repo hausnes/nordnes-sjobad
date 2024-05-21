@@ -21,7 +21,7 @@ class TemperatureFetcher:
 
     def save_to_csv(self, temperature):
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        with open('temperatur.csv', 'a', newline='') as file:
+        with open('/home/hausnes/nordnes-sjobad/temperatur.csv', 'a', newline='') as file:
             writer = csv.writer(file, lineterminator=os.linesep)
             writer.writerow([timestamp, temperature])
 
