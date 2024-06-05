@@ -45,8 +45,8 @@ async function latestTempAsJson() {
 
     console.log(results);
 
-    latest.time = results[results.length - 1].Temperature;
-    latest.temperature = results[results.length - 1]._1;
+    latest.time = results[results.length - 1].tid;
+    latest.temperature = results[results.length - 1].temperatur;
 
     return latest;
 }
@@ -58,8 +58,8 @@ async function fileAsJson() {
 
     csvStream.on('data', (data) => {
         results.push({
-            time: data.Temperature,
-            temperature: data._1
+            time: data.tid,
+            temperature: data.temperatur
         });
     });
 
@@ -71,6 +71,7 @@ async function fileAsJson() {
 
 app.get('/latest', async (req, res) => {
     const latest = await latestTempAsJson();
+    console.log(latest)
     res.json(latest);
 });
 
