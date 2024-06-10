@@ -2,7 +2,7 @@
 Hentar hav- og lufttemperatur frå Nordnes sjøbad si offisielle nettside og lagrar desse i ei CSV-fil. Data blir oppdatert kvar time.
 
 # Oppdateringar
-- 28. mai: Nettsida viser ikkje temperaturar for øyeblikket, så data i CSV-fila blir berre i form av teiknet "-". Dette er ikkje noko eg kan gjere noko med.
+- Feil: 28. mai: Nettsida viser ikkje temperaturar for øyeblikket, så data i CSV-fila blir berre i form av teiknet "-". Dette er ikkje noko eg kan gjere noko med.
 
 # Om koden
 - Python-koden køyrer på ein Ubuntu-server vha. crontab (frå terminal: crontab -e)
