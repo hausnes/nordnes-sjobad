@@ -2,7 +2,11 @@
 Hentar hav- og lufttemperatur frå Nordnes sjøbad si offisielle nettside og lagrar desse i ei CSV-fil. Data blir oppdatert kvar time.
 
 # Oppdateringar
-- Feil: 28. mai: Nettsida viser ikkje temperaturar for øyeblikket, så data i CSV-fila blir berre i form av teiknet "-". Dette er ikkje noko eg kan gjere noko med.
+- Feil på Nordnes sjøbad sine tjenestar, 28. mai: Nettsida viser ikkje temperaturar for øyeblikket, så data i CSV-fila blir berre i form av teiknet "-". Dette er ikkje noko eg kan gjere noko med. Koden er ellers oppdatert for å kunne handtere slike feil.
+- Alternativ versjon, 10. juni: Merga Node JS-app frå as-troska (Trond), som lar deg køyre heile greiene på eigen server. Du kan sjå nettsida hans for ein aktiv versjon av denne appen: https://nordnes.sneaas.no/. Oppdaterte filer:
+  - app.js (for å starte server)
+  - public-mappa med index.html (web-visning)
+  - package.json for å sjå kva pakkar som er naudsynte (installer ved oppstart: npm install)
 
 # Om koden
 - Python-koden køyrer på ein Ubuntu-server vha. crontab (frå terminal: crontab -e)
