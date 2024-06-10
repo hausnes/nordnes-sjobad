@@ -10,7 +10,7 @@ Hentar hav- og lufttemperatur frå Nordnes sjøbad si offisielle nettside og lag
 
 # Om koden
 - Python-koden køyrer på ein Ubuntu-server vha. crontab (frå terminal: crontab -e)
-- Hentar data kvar time, og skriv dette til lokal CSV-fil: [crontab.guru](https://crontab.guru/#*_*_*_*_*)
+- Hentar data kvar time, og skriv dette til lokal CSV-fil: [crontab.guru](https://crontab.guru/#0_*_*_*_*)
 - Overfører oppdatert CSV-fil til Github 1 minutt seinare vha. send.sh: [crontab.guru](https://crontab.guru/#1_*_*_*_*)
 
 # Tips til seinare
