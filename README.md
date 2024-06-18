@@ -3,8 +3,8 @@ Hentar hav- og lufttemperatur frå Nordnes sjøbad si offisielle nettside og lag
 
 # Oppdateringar
 - Feil på Nordnes sjøbad sine tjenestar: Nettsida viser ikkje temperaturar for øyeblikket, så data i CSV-fila blir berre i form av teiknet "-". Dette er ikkje noko eg kan gjere noko med. Koden som tolkar data er ellers oppdatert for å kunne handtere slike feil.
-  - 28. mai, 2024
-  - 11. juni, 2024
+  - ‎ 28. mai, 2024
+  - ‎ 11. juni, 2024
 - Alternativ versjon, 10. juni: Merga Node JS-app frå as-troska (Trond), som lar deg køyre heile greiene på eigen server. Du kan sjå nettsida hans for ein aktiv versjon av denne appen: https://nordnes.sneaas.no/. Oppdaterte filer:
   - app.js (for å starte server)
   - public-mappa med index.html (web-visning)
