@@ -1,5 +1,9 @@
 # Badetemperaturar frå Nordnes sjøbad
-Hentar hav- og lufttemperatur frå Nordnes sjøbad si offisielle nettside og lagrar desse i ei CSV-fil. Data blir oppdatert kvar time.
+Dei offisielle sidene til Nordnes Sjøbad viser live-data frå temperaturmålingane som vert gjort der. I eit av faga eg underviser i hadde me derimot behov for å kunne sjå og vurdere historiske data, og det var derfor denne koden blei skriven.
+
+Kort oppsummert så hentar temperatur.py hav- og lufttemperatur frå Nordnes sjøbad si offisielle nettside, og lagrar desse i ei CSV-fil. Data blir oppdatert kvar time. 
+
+Første datapunkt er frå 21. mai 2024, og fortset til det eventuelt blir laga noko offisielt frå Nordnes sjøbad si side.
 
 # Oppdateringar
 - Feil på Nordnes sjøbad sine tjenestar: Nettsida viser ikkje temperaturar for øyeblikket, så data i CSV-fila blir berre i form av teiknet "-". Dette er ikkje noko eg kan gjere noko med. Koden som tolkar data er ellers oppdatert for å kunne handtere slike feil.
