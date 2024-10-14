@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Fetch and parse the CSV file
-    Papa.parse('../temperatur.csv', {
+    Papa.parse('temperatur.csv', {
         download: true,
         header: false,
         complete: function (results) {
