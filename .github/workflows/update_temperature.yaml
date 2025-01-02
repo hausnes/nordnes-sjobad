@@ -13,7 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        ref: main
+        ref: forbedre-kode
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -39,4 +39,4 @@ jobs:
         git add temperatur.csv
         git commit -m "Oppdatert temperatur: $(date)"
         git pull --rebase
-        git push origin main
+        git push origin forbedre-kode
