@@ -1,0 +1,42 @@
+name: Update temperature
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch: # Tillate manuell start
+
+jobs:
+  update-temperature:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        ref: main
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+        cache: "pip"
+
+    - name: Install dependencies
+      run: |
+        python3 -m pip install -r requirements.txt
+
+    - name: Update temperature
+      run: |
+        python3 temperatur.py
+
+    - name: Configure git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+    - name: Commit temperature
+      run: |
+        git add temperatur.csv
+        git commit -m "Oppdatert temperatur: $(date)"
+        git pull --rebase
+        git push origin main
