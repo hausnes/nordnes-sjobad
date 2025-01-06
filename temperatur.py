@@ -2,6 +2,7 @@ from lxml import html
 import requests
 import csv
 from datetime import datetime
+from zoneinfo import ZoneInfo
 import os
 import sys
 
@@ -32,7 +33,7 @@ class TemperatureFetcher:
         return self.parse_temperature(temp), self.parse_temperature(temp_outdoors)
 
     def save_to_csv(self, temperature: str, temperature_outdoors: str) -> None:
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        timestamp = datetime.now(ZoneInfo("Europe/Oslo")).strftime("%Y-%m-%d %H:%M:%S")
         with open(
             os.path.join(os.path.dirname(__file__), "temperatur.csv"), "a", newline=""
         ) as file:
