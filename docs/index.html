@@ -1,32 +1,95 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="nn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nordnes sjøbad - badetemperatur</title>
+    <meta name="description" content="Sjø- og lufttemperatur ved Nordnes sjøbad i Bergen, oppdatert kvar time, med historiske data sidan mai 2024.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stilark.css">
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="kode.js" defer></script>
 </head>
 <body>
-    <h1>Nordnes sjøbad - badetemperatur</h1>
-    <p>
-        Her vil du kunne sjå kor varmt det er i sjøen ved Nordnes sjøbad. 
-        Data blir henta frå Nordnes sjøbad sine nettsider kvar time,
-        og oppdaterast deretter her (sjå graf under). 
-    </p>
-    <p>
-        Du kan sjå kjeldekode for prosjektet, og bidra til utviklinga på
-        <a href="https://github.com/hausnes/nordnes-sjobad">Github-side</a>. 
-        Merk at du her òg får tilgang til CSV-fila som inneheld alle data.
-    </p>
-    <p id="siste">Hentar data …</p>
-    <div id="container">
-        <!-- Fyllast ut av JS -->
-    </div>
-    <p>
-        Før muspeikaren over grafen for å sjå temperatur og spesifikt tidspunkt.
-    </p>
+    <header class="topp">
+        <svg class="bolgjer" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,64 C240,112 480,16 720,48 C960,80 1200,120 1440,72 L1440,120 L0,120 Z" opacity=".35"/>
+            <path d="M0,88 C200,56 440,120 720,92 C1000,64 1240,100 1440,84 L1440,120 L0,120 Z"/>
+        </svg>
+        <div class="innhald">
+            <p class="stad">Bergen · Nordnes sjøbad</p>
+            <h1>Kor varmt er sjøen?</h1>
+            <div class="hovudtal" aria-live="polite">
+                <span id="sjo-nå" class="tal">–</span><span class="eining">°C</span>
+            </div>
+            <p id="siste" class="tidspunkt">Hentar data …</p>
+        </div>
+    </header>
+
+    <main class="innhald">
+        <section class="kort-rad" aria-label="Nøkkeltal">
+            <article class="kort">
+                <h2>Lufta</h2>
+                <p class="verdi" id="luft-nå">–</p>
+                <p class="forklaring">Siste måling</p>
+            </article>
+            <article class="kort">
+                <h2>Siste døgn</h2>
+                <p class="verdi" id="endring">–</p>
+                <p class="forklaring">Endring i sjøtemperatur</p>
+            </article>
+            <article class="kort">
+                <h2>Same tid i fjor</h2>
+                <p class="verdi" id="i-fjor">–</p>
+                <p class="forklaring" id="i-fjor-tekst">Sjøtemperatur for eitt år sidan</p>
+            </article>
+            <article class="kort">
+                <h2>Varmast i år</h2>
+                <p class="verdi" id="varmast">–</p>
+                <p class="forklaring" id="varmast-tekst">Høgaste sjøtemperatur</p>
+            </article>
+        </section>
+
+        <section class="graf-kort">
+            <div class="graf-topp">
+                <div>
+                    <h2>Temperaturutvikling</h2>
+                    <p class="forklaring">Dra over eit område i grafen for å zoome inn. Før muspeikaren over grafen for å sjå temperatur og tidspunkt.</p>
+                </div>
+                <div class="periodeval" role="group" aria-label="Vel periode">
+                    <button type="button" data-dagar="7">7 dagar</button>
+                    <button type="button" data-dagar="30" aria-pressed="true">30 dagar</button>
+                    <button type="button" data-dagar="365">1 år</button>
+                    <button type="button" data-dagar="0">Alt</button>
+                </div>
+            </div>
+            <div id="container">
+                <!-- Fyllast ut av JS -->
+            </div>
+        </section>
+
+        <section class="om">
+            <h2>Om sida</h2>
+            <p>
+                Her vil du kunne sjå kor varmt det er i sjøen ved Nordnes sjøbad.
+                Data blir henta frå Nordnes sjøbad sine nettsider kvar time,
+                og oppdaterast deretter her. Første måling er frå 21. mai 2024.
+            </p>
+            <p>
+                Du kan sjå kjeldekode for prosjektet, og bidra til utviklinga på
+                <a href="https://github.com/hausnes/nordnes-sjobad">Github-sida</a>.
+                Merk at du her òg får tilgang til
+                <a href="https://github.com/hausnes/nordnes-sjobad/blob/main/temperatur.csv">CSV-fila</a>
+                som inneheld alle data.
+            </p>
+        </section>
+    </main>
+
+    <footer class="innhald botn">
+        Data: Nordnes sjøbad · Kjeldekode: <a href="https://github.com/hausnes/nordnes-sjobad">hausnes/nordnes-sjobad</a>
+    </footer>
 </body>
 </html>
