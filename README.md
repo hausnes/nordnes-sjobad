@@ -1,4 +1,10 @@
 # Badetemperaturar frå Nordnes sjøbad
+
+> [!IMPORTANT]
+> **Ute etter data?** Den oppdaterte CSV-fila ligg på greina **`data`**, ikkje på `main`. `temperatur.csv` på `main` blei sist oppdatert 20. oktober 2026.
+>
+> - 📄 Sjå fila: [data/temperatur.csv](https://github.com/hausnes/nordnes-sjobad/blob/data/temperatur.csv)
+> - ⬇️ Last ned / bruk i kode: https://raw.githubusercontent.com/hausnes/nordnes-sjobad/data/temperatur.csv
 Dei offisielle sidene til Nordnes Sjøbad viser live-data frå temperaturmålingane som vert gjort der. I eit av faga eg underviser i hadde me derimot behov for å kunne sjå og vurdere historiske data, og det var derfor denne koden blei skriven.
 
 Kort oppsummert så hentar temperatur.py hav- og lufttemperatur frå Nordnes sjøbad si offisielle nettside, og lagrar desse i ei CSV-fil. Data blir oppdatert kvar time. 
@@ -19,6 +25,44 @@ Første datapunkt er frå 21. mai 2024, og fortset til det eventuelt blir laga n
 - Hentar data kvar time, og skriv dette til lokal CSV-fil: [crontab.guru](https://crontab.guru/#0_*_*_*_*)
 - Overfører oppdatert CSV-fil til Github 1 minutt seinare vha. send.sh: [crontab.guru](https://crontab.guru/#1_*_*_*_*)
 - Data blir pusha til greina `data` (ikkje `main`), slik at Github Pages slepp å byggje sida på nytt kvar time. Siste versjon av CSV-fila ligg derfor her: [data/temperatur.csv](https://github.com/hausnes/nordnes-sjobad/blob/data/temperatur.csv)
+
+# NB! Greinene `main` og `data`
+
+Frå 22. oktober 2026 er repoet delt i to greiner:
+
+- **`main`**: Koden og nettsida (`docs/`). Berre endringar eg gjer sjølv hamnar her, så Github Pages byggjer berre sida på nytt når eg faktisk endrar noko.
+- **`data`**: Det serveren pushar til kvar time, som `temperatur-bot`. Inneheld all koden frå `main` + oppdatert `temperatur.csv`. Nettsida hentar CSV-fila herifrå.
+
+Serveren må **alltid** stå på greina `data`. `send.sh` byter til `data` før kvar commit for sikkerheits skuld.
+
+`temperatur.csv` på `main` er ein gammal kopi som ikkje blir oppdatert lenger. **Ikkje slett han frå `main`**: då vil neste merge til `data` prøve å slette fila der òg.
+
+## Slik blir ting oppdatert i framtida
+
+**Endre nettsida (`docs/`) eller README** – ingenting skal gjerast på serveren:
+```bash
+# På Mac-en
+git pull
+# ... gjer endringane ...
+git add <filer>
+git commit -m "Kva eg endra"
+git push
+```
+
+**Endre kode som køyrer på serveren (`temperatur.py`, `send.sh`)** – gjer som over, og hent deretter endringane inn på serveren. Gjer det midt i ein time, ikkje rett før eller etter :00/:01:
+```bash
+# På serveren
+cd /home/hausnes/nordnes-sjobad
+git fetch && git merge origin/main
+```
+
+**Aldri på serveren:** `git pull`, `git checkout main` eller `git push origin main`.
+
+## Slik sjekkar eg at alt fungerer
+
+Siste commit på [data-greina](https://github.com/hausnes/nordnes-sjobad/commits/data) skal vere frå siste heile time. Er han eldre, sjå etter feilmeldingar ved å køyre `send.sh` manuelt på serveren.
+
+Merk: Før omlegginga feila pushen frå serveren stille i to døgn (20.–22. oktober 2026) fordi eg hadde pusha endringar til `main` frå Mac-en. Serveren fekk då ikkje pushe utan å `pull`-e først. Dette skal ikkje kunne skje lenger, sidan serveren og eg no pushar til kvar si grein.
 
 # Tips til seinare
 - Setje opp SSH for autentisering: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
