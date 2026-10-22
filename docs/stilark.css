@@ -1,11 +1,287 @@
-h1 {
-    color: red;
+:root {
+    --bakgrunn: #f3f7fa;
+    --flate: #ffffff;
+    --tekst: #0f2433;
+    --dempa: #5b7183;
+    --kant: #dce6ee;
+    --lenke: #0a6aa1;
+    --hav-1: #063a5c;
+    --hav-2: #0a6aa1;
+    --hav-3: #19a7ce;
+    --sjo: #0a84c6;
+    --luft: #f08a24;
+    --varm: #d9531e;
+    --kald: #1279c4;
+    --rutenett: #e8eef3;
+    --skugge: 0 1px 2px rgba(15, 36, 51, .06), 0 8px 24px rgba(15, 36, 51, .06);
 }
 
-h1, p {
-    padding-left: 1rem;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bakgrunn: #0b1620;
+        --flate: #12212e;
+        --tekst: #e6eef4;
+        --dempa: #93a7b6;
+        --kant: #1f3343;
+        --lenke: #6cc4f0;
+        --hav-1: #031c2d;
+        --hav-2: #064a73;
+        --hav-3: #0b7fae;
+        --sjo: #4cb8f0;
+        --luft: #f5a352;
+        --varm: #f07a4a;
+        --kald: #5fb0ef;
+        --rutenett: #1c2e3c;
+        --skugge: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+    }
 }
 
-#siste {
-    font-size: 1.2rem;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bakgrunn);
+    color: var(--tekst);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--lenke);
+}
+
+.innhald {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Toppfelt med havgradient og bølgjer */
+.topp {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(160deg, var(--hav-1) 0%, var(--hav-2) 55%, var(--hav-3) 100%);
+    padding: 3rem 0 6.5rem;
+    text-align: center;
+}
+
+.bolgjer {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 90px;
+    fill: var(--bakgrunn);
+}
+
+.stad {
+    margin: 0;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    opacity: .8;
+}
+
+.topp h1 {
+    margin: .4rem 0 0;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 600;
+}
+
+.hovudtal {
+    display: inline-flex;
+    align-items: flex-start;
+    margin: .5rem 0 .25rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.hovudtal .tal {
+    font-size: clamp(4.5rem, 16vw, 7.5rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -.03em;
+}
+
+.hovudtal .eining {
+    margin-top: .6rem;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 500;
+    opacity: .85;
+}
+
+.tidspunkt {
+    margin: 0;
+    opacity: .85;
+}
+
+/* Nøkkeltal */
+main {
+    position: relative;
+    margin-top: -3rem;
+}
+
+.kort-rad {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1rem;
+}
+
+.kort,
+.graf-kort,
+.om {
+    background: var(--flate);
+    border: 1px solid var(--kant);
+    border-radius: 16px;
+    box-shadow: var(--skugge);
+}
+
+.kort {
+    padding: 1.1rem 1.25rem;
+}
+
+.kort h2 {
+    margin: 0;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--dempa);
+}
+
+.kort .verdi {
+    margin: .35rem 0 .1rem;
+    font-size: 1.9rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.verdi.opp {
+    color: var(--varm);
+}
+
+.verdi.ned {
+    color: var(--kald);
+}
+
+.forklaring {
+    margin: 0;
+    font-size: .875rem;
+    color: var(--dempa);
+}
+
+/* Graf */
+.graf-kort {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.25rem .5rem;
+}
+
+.graf-topp {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: .75rem;
+}
+
+.graf-topp h2,
+.om h2 {
+    margin: 0 0 .25rem;
+    font-size: 1.15rem;
+}
+
+.periodeval {
+    display: inline-flex;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--bakgrunn);
+    border: 1px solid var(--kant);
+}
+
+.periodeval button {
+    font: inherit;
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--dempa);
+    background: none;
+    border: 0;
+    border-radius: 999px;
+    padding: .35rem .85rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.periodeval button:hover {
+    color: var(--tekst);
+}
+
+.periodeval button[aria-pressed="true"] {
+    background: var(--flate);
+    color: var(--tekst);
+    box-shadow: 0 1px 3px rgba(15, 36, 51, .15);
+}
+
+.periodeval button:focus-visible {
+    outline: 2px solid var(--sjo);
+    outline-offset: 1px;
+}
+
+#container {
+    height: 440px;
+}
+
+/* Om-seksjon og botn */
+.om {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+}
+
+.om p {
+    margin: .5rem 0 0;
+    max-width: 70ch;
+}
+
+.botn {
+    padding-top: 2rem;
+    padding-bottom: 2.5rem;
+    text-align: center;
+    font-size: .85rem;
+    color: var(--dempa);
+}
+
+@media (max-width: 560px) {
+    .topp {
+        padding-top: 2rem;
+    }
+
+    .kort-rad {
+        grid-template-columns: 1fr 1fr;
+        gap: .75rem;
+    }
+
+    .kort {
+        padding: .9rem 1rem;
+    }
+
+    .kort .verdi {
+        font-size: 1.5rem;
+    }
+
+    .periodeval {
+        width: 100%;
+    }
+
+    .periodeval button {
+        flex: 1;
+        padding: .35rem .4rem;
+    }
+
+    #container {
+        height: 340px;
+    }
 }
