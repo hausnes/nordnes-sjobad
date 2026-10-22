@@ -18,6 +18,7 @@ Første datapunkt er frå 21. mai 2024, og fortset til det eventuelt blir laga n
 - Python-koden køyrer på ein Ubuntu-server vha. crontab (frå terminal: crontab -e)
 - Hentar data kvar time, og skriv dette til lokal CSV-fil: [crontab.guru](https://crontab.guru/#0_*_*_*_*)
 - Overfører oppdatert CSV-fil til Github 1 minutt seinare vha. send.sh: [crontab.guru](https://crontab.guru/#1_*_*_*_*)
+- Data blir pusha til greina `data` (ikkje `main`), slik at Github Pages slepp å byggje sida på nytt kvar time. Siste versjon av CSV-fila ligg derfor her: [data/temperatur.csv](https://github.com/hausnes/nordnes-sjobad/blob/data/temperatur.csv)
 
 # Tips til seinare
 - Setje opp SSH for autentisering: https://docs.github.com/en/authentication/connecting-to-github-with-ssh

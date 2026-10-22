@@ -1,5 +1,5 @@
 // Hentar CSV-fila direkte frå repoet, slik at sida alltid viser siste data
-const CSV_URL = 'https://raw.githubusercontent.com/hausnes/nordnes-sjobad/main/temperatur.csv';
+const CSV_URL = 'https://raw.githubusercontent.com/hausnes/nordnes-sjobad/data/temperatur.csv';
 
 const TIME = 3600 * 1000;
 const DOGN = 24 * TIME;
